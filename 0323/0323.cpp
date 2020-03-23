@@ -3,10 +3,26 @@
 
 #include "pch.h"
 #include <iostream>
-
+#include "TextUI.cpp"
 int main()
 {
-    std::cout << "Hello World!\n";
+	TextUI *ui = new TextUI;
+	int cmd;
+
+	while (true)
+	{
+		ui->displayMenu();
+
+		std::cin >> cmd;
+
+		if (cmd != 4) {
+			ui->processCommand();
+		}
+		else {
+			std::cout << "Goodbye, thanks for using LS. ";
+			break;
+		}
+	}
 }
 
 // 執行程式: Ctrl + F5 或 [偵錯] > [啟動但不偵錯] 功能表
