@@ -21,6 +21,27 @@
     <ClInclude Include="device.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="logic_simulator.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="text_ui.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="gate_not.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="gate_and.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="gate_or.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="i_pin.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="o_pin.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -28,12 +49,6 @@
     </ClCompile>
     <ClCompile Include="0323.cpp">
       <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="LogicSimulator.cpp">
-      <Filter>資源檔</Filter>
-    </ClCompile>
-    <ClCompile Include="TextUI.cpp">
-      <Filter>資源檔</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

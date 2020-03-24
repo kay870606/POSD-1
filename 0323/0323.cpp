@@ -3,7 +3,8 @@
 
 #include "pch.h"
 #include <iostream>
-#include "TextUI.cpp"
+#include "text_ui.h"
+
 int main()
 {
 	TextUI *ui = new TextUI;

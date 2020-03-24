@@ -1,5 +1,4 @@
-#ifndef DEVICE_H
-#define DEVICE_H
+#pragma once
 
 #include <vector>
 
@@ -12,4 +11,3 @@ public:
 protected:
 	std::vector<Device *> iPins;
 };
-#endif
