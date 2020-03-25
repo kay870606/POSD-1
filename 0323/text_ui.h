@@ -15,20 +15,18 @@ public:
 			<< "Command :";
 	}
 	void processCommand() {
-		int cmd;
-		LogicSimulator *ls = new LogicSimulator;
-
-		while (true)
+		try
 		{
-			displayMenu();
+			LogicSimulator *ls = new LogicSimulator;
+			std::string str;
+			int cmd;
 
-			std::cin >> cmd;
-			if (std::cin.fail()) {
-				std::cin.clear();
-				std::cin.get();
-				continue;
-			}
-			else {
+			while (true) {
+				displayMenu();
+
+				std::cin >> str;
+				cmd = std::stoi(str);
+
 				if (cmd == 1) {
 
 					std::cout << "Please key in a file path: ";
@@ -45,7 +43,7 @@ public:
 					}
 				}
 				else if (cmd == 2) {
-
+					ls->getTruthTable();
 				}
 				else if (cmd == 3) {
 
@@ -55,6 +53,10 @@ public:
 					break;
 				}
 			}
+		}
+		catch (const std::exception&)
+		{
+			std::cout << "Error." << std::endl;
 		}
 	}
 };

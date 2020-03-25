@@ -12,28 +12,55 @@ public:
 
 	}
 	std::string getTruthTable() {
+		int pow2 = 1;
+		for (int i = 1; i <= 10; i++)
+			pow2 *= 2;
 
+
+		for (int i = 1, j = 1; i < pow2; i++, j = i) {
+			for (int k = pow2; k >= 1; k /= 2) {
+				std::cout << j / k;
+				j %= k;
+			}
+			std::cout << std::endl;
+		}
+		return "";
 	}
 	bool load(std::string path) {
 
-		std::ifstream  file;
+		std::fstream  file;
 
 		file.open(path);
 		if (file) {
 			std::string line;
-			std::stringstream ss;
 			int iPinsNumber, gatesNumber;
 
 			std::getline(file, line);
-			
-			ss << line;
-			ss >> iPinsNumber;
+			iPinsNumber = stoi(line);
 
 			std::getline(file, line);
-			ss << line;
-			ss >> gatesNumber;
+			gatesNumber = stoi(line);
 
-			std::cout << iPinsNumber << gatesNumber << "rrrrraa";
+			for (int i = 0; i < gatesNumber; i++) {
+				std::getline(file, line);
+				std::stringstream ss(line);
+				std::string token;
+
+				getline(ss, token, ' ');
+				stoi(token);
+
+				while (1)
+				{
+					getline(ss, token, ' ');
+					if (stoi(token) > 0) {
+					}
+					else if (stoi(token) < 0) {
+					}
+					else break;
+
+					std::cout << token << std::endl;
+				}
+			}
 
 			return true;
 		}
