@@ -8,23 +8,12 @@
 int main()
 {
 	TextUI *ui = new TextUI;
-	int cmd;
 
-	while (true)
-	{
-		ui->displayMenu();
+	ui->processCommand();
 
-		std::cin >> cmd;
-
-		if (cmd != 4) {
-			ui->processCommand();
-		}
-		else {
-			std::cout << "Goodbye, thanks for using LS. ";
-			break;
-		}
-	}
+	return 0;
 }
+
 
 // 執行程式: Ctrl + F5 或 [偵錯] > [啟動但不偵錯] 功能表
 // 偵錯程式: F5 或 [偵錯] > [啟動偵錯] 功能表
