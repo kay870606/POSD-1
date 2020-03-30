@@ -4,5 +4,7 @@
 
 class OPin :public Device
 {
-
+	int getOutput() {
+		return 0;
+	}
 };

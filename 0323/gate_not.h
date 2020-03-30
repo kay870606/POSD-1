@@ -4,5 +4,7 @@
 
 class GateNOT :public Device
 {
-
+	int getOutput() {
+		return 1;
+	}
 };
