@@ -1,2 +1,7 @@
 ﻿  0323.cpp
-  0323.vcxproj -> C:\Users\Mia860820\Downloads\POSD-1\Debug\0323.exe
+c:\users\main\downloads\posd-1\0323\gate_and.h(9): warning C4018: '<': signed/unsigned 不相符
+c:\users\main\downloads\posd-1\0323\gate_or.h(9): warning C4018: '<': signed/unsigned 不相符
+c:\users\main\downloads\posd-1\0323\logic_simulator.h(23): warning C4018: '<': signed/unsigned 不相符
+c:\users\main\downloads\posd-1\0323\logic_simulator.h(27): warning C4018: '<=': signed/unsigned 不相符
+c:\users\main\downloads\posd-1\0323\logic_simulator.h(31): warning C4018: '<': signed/unsigned 不相符
+  0323.vcxproj -> C:\Users\main\Downloads\POSD-1\Debug\0323.exe

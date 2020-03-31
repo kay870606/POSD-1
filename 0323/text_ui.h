@@ -36,17 +36,17 @@ public:
 					std::cin >> path;
 
 					if (ls->load(path)) {
-						std::cout << "Circuit: 3 input pins, 1 output pins and 3 gates" << std::endl;
+
 					}
 					else {
 						std::cout << "File not found or file format error!!" << std::endl;
 					}
 				}
 				else if (cmd == 2) {
-					ls->getTruthTable();
+
 				}
 				else if (cmd == 3) {
-
+					std::cout << ls->getTruthTable() << std::endl;
 				}
 				else if (cmd == 4) {
 					std::cout << "Goodbye, thanks for using LS. ";

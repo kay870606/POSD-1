@@ -17,6 +17,34 @@ public:
 		return "";
 	}
 	std::string getTruthTable() {
+		if (iPins.size() == 0)return "Please load an lcf file, before using this operation. ";
+		else {
+			std::string str = "Truth table:\n";
+			for (int i = 0; i < iPins.size(); i++) {
+				str += "i ";
+			}
+			str += "| o\n";
+			for (int i = 1; i <= iPins.size(); i++) {
+				str += std::to_string(i) + " ";
+			}
+			str += "| 1\n";
+			for (int i = 0; i < iPins.size(); i++) {
+				str += "--";
+			}
+			str += "+--\n";
+
+			/*for (int i = 0; i < powInt(2, iPins.size); i++) {
+				for (int j = 0, k = i, l = size - 1; j < size; j++) {
+					int m = (k / mypow(l)) % 2;
+					iPins[j]->setValue(m);
+					truthtable = truthtable + to_string(m) + " ";
+					l--;
+				}
+				int m = oPins[0]->getOutput();
+				str += "| " + m + "\n";
+			}*/
+			return str;
+		}
 		/*int pow2 = 1;
 		for (int i = 1; i <= 10; i++)
 			pow2 *= 2;
@@ -29,7 +57,6 @@ public:
 			}
 			std::cout << std::endl;
 		}*/
-		return "";
 	}
 	bool load(std::string path) {
 
@@ -66,17 +93,21 @@ public:
 				while (1)
 				{
 					getline(ss, token, ' ');
-					if (stoi(token) > 0) {
+					int value = stoi(token);
 
+					if (value > 0) {
+						int index = value - 1;
+						//circuit[i]->addInputPin(circuit[index]);
 					}
-					else if (stoi(token) < 0) {
-
+					else if (value < 0) {
+						int index = (int)abs(value) - 1;
+						circuit[i]->addInputPin(iPins[index]);
 					}
 					else break;
-
-					std::cout << token << std::endl;
 				}
 			}
+
+			std::cout << "Circuit: " << iPins.size() << " input pins, " << oPins.size() << " output pins and " << circuit.size() << " gates" << std::endl << std::endl;
 
 			return true;
 		}

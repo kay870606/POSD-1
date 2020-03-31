@@ -6,8 +6,8 @@ class GateAND :public Device
 {
 public:
 	int getOutput() {
-		for (int i; i < iPins.size; i++) {
-			if (iPins[i]->getOutput == 0)
+		for (int i = 0; i < iPins.size(); i++) {
+			if (iPins[i]->getOutput() == 0)
 				return 0;
 		}
 		return 1;
