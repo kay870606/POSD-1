@@ -2,7 +2,7 @@
 
 #include "device.h"
 
-class GateAND :public Device
+class GateAND : public Device
 {
 public:
 	int getOutput() {

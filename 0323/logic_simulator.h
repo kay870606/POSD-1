@@ -13,53 +13,33 @@
 class LogicSimulator
 {
 public:
-	std::string getSimulationResult(std::vector<Device *> DeviceVector) {
-		return "";
-	}
-	std::string getTruthTable() {
-		if (iPins.size() == 0)return "Please load an lcf file, before using this operation. ";
-		else {
-			std::string str = "Truth table:\n";
-			for (int i = 0; i < iPins.size(); i++) {
-				str += "i ";
-			}
-			str += "| o\n";
-			for (int i = 1; i <= iPins.size(); i++) {
-				str += std::to_string(i) + " ";
-			}
-			str += "| 1\n";
-			for (int i = 0; i < iPins.size(); i++) {
-				str += "--";
-			}
-			str += "+--\n";
+	std::string getSimulationResult(std::vector<int> inputVector) {
+		std::string str = "Simulation Result:\n" + getTableTopString();
 
-			/*for (int i = 0; i < powInt(2, iPins.size); i++) {
-				for (int j = 0, k = i, l = size - 1; j < size; j++) {
-					int m = (k / mypow(l)) % 2;
-					iPins[j]->setValue(m);
-					truthtable = truthtable + to_string(m) + " ";
-					l--;
-				}
-				int m = oPins[0]->getOutput();
-				str += "| " + m + "\n";
-			}*/
-			return str;
+		for (int i = 0; i < iPins.size(); i++) {
+			str = str + std::to_string(inputVector[i]) + " ";
+			iPins[i]->setValue(inputVector[i]);
 		}
-		/*int pow2 = 1;
-		for (int i = 1; i <= 10; i++)
-			pow2 *= 2;
-
-
-		for (int i = 1, j = 1; i < pow2; i++, j = i) {
-			for (int k = pow2; k >= 1; k /= 2) {
-				std::cout << j / k;
-				j %= k;
-			}
-			std::cout << std::endl;
-		}*/
+		str += "| " + std::to_string(oPins[0]->getOutput()) + "\n";
+		return str;
 	}
-	bool load(std::string path) {
 
+	std::string getTruthTable() {
+		std::string str = "Truth table:\n" + getTableTopString();
+
+		for (int i = 0; i < (1 << iPins.size()); i++) {
+			int k = 0;
+			for (int j = (1 << (iPins.size() - 1)); j > 0; j /= 2) {
+				int bit = (i & j ? 1 : 0);
+				iPins[k++]->setValue(bit);
+				str += std::to_string(bit) + " ";
+			}
+			str += "| " + std::to_string(oPins[0]->getOutput()) + "\n";
+		}
+		return str;
+	}
+
+	bool load(std::string path) {
 		std::fstream  file;
 
 		file.open(path);
@@ -69,7 +49,6 @@ public:
 
 			std::getline(file, line);
 			iPinsNumber = stoi(line);
-
 			std::getline(file, line);
 			gatesNumber = stoi(line);
 
@@ -106,26 +85,44 @@ public:
 					else break;
 				}
 			}
-
-			std::cout << "Circuit: " << iPins.size() << " input pins, " << oPins.size() << " output pins and " << circuit.size() << " gates" << std::endl << std::endl;
-
 			return true;
 		}
 		else
 			return false;
+	}
+
+	int getCircuitSize() {
+		return circuit.size();
+	}
+
+	int getIPinsSize() {
+		return iPins.size();
+	}
+
+	int getOPinsSize() {
+		return oPins.size();
 	}
 private:
 	std::vector<Device *> circuit;
 	std::vector<Device *> iPins;
 	std::vector<Device *> oPins;
 
-	int powInt(int base, int exp) {
-		int result = 1;
+	std::string getTableTopString() {
+		std::string str;
 
-		while (exp--)
-		{
-			result *= base;
+		for (int i = 0; i < iPins.size(); i++) {
+			str += "i ";
 		}
-		return result;
+		str += "| o\n";
+		for (int i = 1; i <= iPins.size(); i++) {
+			str += std::to_string(i) + " ";
+		}
+		str += "| 1\n";
+		for (int i = 0; i < iPins.size(); i++) {
+			str += "--";
+		}
+		str += "+--\n";
+
+		return str;
 	}
 };

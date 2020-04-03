@@ -2,7 +2,7 @@
 
 #include "device.h"
 
-class GateOR :public Device
+class GateOR : public Device
 {
 public:
 	int getOutput() {

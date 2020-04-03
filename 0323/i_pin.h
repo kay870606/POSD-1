@@ -2,7 +2,7 @@
 
 #include "device.h"
 
-class IPin :public Device
+class IPin : public Device
 {
 public:
 	void setValue(int number) {
