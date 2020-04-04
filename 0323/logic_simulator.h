@@ -9,7 +9,6 @@
 #include "gate_not.h"
 #include "gate_and.h"
 #include "gate_or.h"
-using namespace std;
 
 class LogicSimulator
 {
@@ -56,10 +55,8 @@ public:
 			for (int i = 0; i < iPinsNumber; i++) {//初始化
 				iPins.push_back(new IPin);
 			}
-			oPins.resize(1);
-			//circuit.resize(gatesNumber);
 
-			double vector[100][1024];
+			std::vector<std::vector<double>> vector(gatesNumber);
 			std::vector<int> isoPin(gatesNumber, 1);
 
 			for (int i = 0; i < gatesNumber; i++) {
@@ -74,14 +71,12 @@ public:
 				else if (gateType == 2)circuit.push_back(new GateOR);
 				else if (gateType == 3)circuit.push_back(new GateNOT);
 
-				int j = 0;
 				while (1)
 				{
 					getline(ss, token, ' ');
 					double value = stof(token);
-					vector[i][j] = value;
+					vector[i].push_back(value);
 					if (value == 0)break;
-					j++;
 				}
 			}
 
@@ -107,7 +102,7 @@ public:
 			}
 			for (int i = 0; i < gatesNumber; i++) {
 				if (isoPin[i] == 1) {
-					oPins[0] = circuit[i];
+					oPins.push_back(circuit[i]);
 					break;
 				}
 			}
@@ -118,15 +113,15 @@ public:
 	}
 
 	int getCircuitSize() {
-		return circuit.size();
+		return (int)circuit.size();
 	}
 
 	int getIPinsSize() {
-		return iPins.size();
+		return (int)iPins.size();
 	}
 
 	int getOPinsSize() {
-		return oPins.size();
+		return (int)oPins.size();
 	}
 private:
 	std::vector<Device *> circuit;
@@ -152,7 +147,7 @@ private:
 		return str;
 	}
 
-	void processIPinsNumber(std::fstream file) {
+	/*void processIPinsNumber(std::fstream file) {
 		std::string line;
 
 		std::getline(file, line);
@@ -162,41 +157,8 @@ private:
 		}
 	}
 
-	std::vector<std::vector<int>> fileContentToVector(std::fstream file) {
-		std::string line;
-		std::vector<std::vector<int>> vector;
-
-		std::getline(file, line);
-		int gatesNumber = stoi(line);
-
-		for (int i = 0; i < gatesNumber; i++) {
-			std::getline(file, line);
-			std::stringstream ss(line);
-			std::string token;
-
-			while (1) {
-				getline(ss, token, ' ');
-				int value = stoi(token);
-			}
-		}
-		return vector;
-	}
-
-	void splitStr2Vec(string s, vector<string>& buf, string st)
-	{
-		int current = 0; //最初由 0 的位置開始找
-		int next;
-		while (1)
-		{
-			next = s.find_first_of(st, current);
-			if (next != current)
-			{
-				string tmp = s.substr(current, next - current);
-				if (tmp.size() != 0) //忽略空字串
-					buf.push_back(tmp);
-			}
-			if (next == string::npos) break;
-			current = next + 1; //下次由 next + 1 的位置開始找起。
-		}
-	}
+	std::vector<std::vector<double>> fileContentToVector(std::fstream file) {
+		                                  
+		return;
+	}*/
 };

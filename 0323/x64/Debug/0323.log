@@ -1,6 +1,2 @@
 ﻿  0323.cpp
-c:\users\main\downloads\posd-1\0323\logic_simulator.h(121): warning C4267: 'return': 將 'size_t' 轉換為 'int'，資料可能遺失
-c:\users\main\downloads\posd-1\0323\logic_simulator.h(125): warning C4267: 'return': 將 'size_t' 轉換為 'int'，資料可能遺失
-c:\users\main\downloads\posd-1\0323\logic_simulator.h(129): warning C4267: 'return': 將 'size_t' 轉換為 'int'，資料可能遺失
-c:\users\main\downloads\posd-1\0323\logic_simulator.h(191): warning C4267: '=': 將 'size_t' 轉換為 'int'，資料可能遺失
   0323.vcxproj -> C:\Users\main\Downloads\POSD-1\x64\Debug\0323.exe
