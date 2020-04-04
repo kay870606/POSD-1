@@ -4,7 +4,11 @@
 
 class GateNOT : public Device
 {
+public:
 	int getOutput() {
-		return 1;
+		if (iPins[0]->getOutput() == 0)
+			return 1;
+		else
+			return 0;
 	}
 };
