@@ -3,7 +3,7 @@
   <Class Name="Device">
     <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAIAAAAAAAAAACAAAAAAAAEAAAQ=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAAIAAAAAAAAAAAAAAAAAAAEAAAQ=</HashCode>
       <FileName>device.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -38,7 +38,7 @@
   <Class Name="LogicSimulator">
     <Position X="11.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAQAAYAAEAAAACAAAAACBAAAAAAAAAAAQAUAAAA=</HashCode>
+      <HashCode>gAAAAAQAAYAAEAAAAAAAAAACBCAAAAAAAAAAwAUAAAA=</HashCode>
       <FileName>logic_simulator.h</FileName>
     </TypeIdentifier>
   </Class>

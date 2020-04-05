@@ -13,14 +13,15 @@
 class LogicSimulator
 {
 public:
-	std::string getSimulationResult(std::vector<int> inputVector) {
+	std::string getSimulationResult(std::vector<int> vector) {
 		std::string str = "Simulation Result:\n" + getTableTopString();
 
 		for (int i = 0; i < iPins.size(); i++) {
-			str += std::to_string(inputVector[i]) + " ";
-			iPins[i]->setValue(inputVector[i]);
+			str += std::to_string(vector[i]) + " ";
+			iPins[i]->setValue(vector[i]);
 		}
 		str += "| " + std::to_string(oPins[0]->getOutput()) + "\n";
+
 		return str;
 	}
 
@@ -36,6 +37,7 @@ public:
 			}
 			str += "| " + std::to_string(oPins[0]->getOutput()) + "\n";
 		}
+
 		return str;
 	}
 
@@ -48,7 +50,7 @@ public:
 			if (iPins.size() != 0) {
 				clearVector();
 			}
-			std::vector<std::vector<double>> vector = getDoubleVector(file);
+			std::vector<std::vector<double>> vector = getDoubleVectorFromFileContent(file);
 			std::vector<int> searchOutput(circuit.size(), 1);
 
 			for (int i = 0; i < circuit.size(); i++) {
@@ -69,12 +71,14 @@ public:
 					}
 				}
 			}
-			for (int i = 0; i < circuit.size(); i++) {
+
+			for (int i = 0; i < circuit.size(); i++) {//沒有去連別的gate的gate，就是output
 				if (searchOutput[i] == 1) {
 					oPins.push_back(circuit[i]);
 					break;
 				}
 			}
+
 			return true;
 		}
 	}
@@ -90,6 +94,7 @@ public:
 	int getOPinsSize() {
 		return (int)oPins.size();
 	}
+
 private:
 	std::vector<Device *> circuit;
 	std::vector<Device *> iPins;
@@ -120,7 +125,7 @@ private:
 		circuit.clear();
 	}
 
-	std::vector<std::vector<double>> getDoubleVector(std::fstream&  file) {
+	std::vector<std::vector<double>> getDoubleVectorFromFileContent(std::fstream&  file) {
 		std::string line;
 		int iPinsNumber, gatesNumber;
 
@@ -155,6 +160,7 @@ private:
 				if (value == 0)break;
 			}
 		}
+
 		return vector;
 	}
 };
