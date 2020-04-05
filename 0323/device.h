@@ -14,12 +14,8 @@ public:
 	};
 
 	virtual void setValue(int number) {
-		value = number;
 	};
 
 protected:
 	std::vector<Device *> iPins;
-
-private:
-	int value;
 };

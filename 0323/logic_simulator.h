@@ -43,73 +43,40 @@ public:
 		std::fstream  file;
 
 		file.open(path);
-		if (file) {
-			std::string line;
-			int iPinsNumber, gatesNumber;
-
-			std::getline(file, line);
-			iPinsNumber = stoi(line);
-			std::getline(file, line);
-			gatesNumber = stoi(line);
-
-			for (int i = 0; i < iPinsNumber; i++) {//ªì©l¤Æ
-				iPins.push_back(new IPin);
+		if (!file) return false;
+		else {
+			if (iPins.size() != 0) {
+				clearVector();
 			}
+			std::vector<std::vector<double>> vector = getDoubleVector(file);
+			std::vector<int> searchOutput(circuit.size(), 1);
 
-			std::vector<std::vector<double>> vector(gatesNumber);
-			std::vector<int> isoPin(gatesNumber, 1);
-
-			for (int i = 0; i < gatesNumber; i++) {
-				std::getline(file, line);
-				std::stringstream ss(line);
-				std::string token;
-
-				getline(ss, token, ' ');
-				int gateType = stoi(token);
-
-				if (gateType == 1)circuit.push_back(new GateAND);
-				else if (gateType == 2)circuit.push_back(new GateOR);
-				else if (gateType == 3)circuit.push_back(new GateNOT);
-
-				while (1)
-				{
-					getline(ss, token, ' ');
-					double value = stof(token);
-					vector[i].push_back(value);
-					if (value == 0)break;
-				}
-			}
-
-			for (int i = 0; i < gatesNumber; i++) {
+			for (int i = 0; i < circuit.size(); i++) {
 				int j = 0;
 				while (1) {
-					double gatePin = vector[i][j];
-					if (gatePin == 0) {
+					double value = vector[i][j++];
+					if (value == 0) {
 						break;
 					}
-					else if (gatePin < 0) {
-						int index = (int)abs(gatePin) - 1;
+					else if (value < 0) {
+						int index = (int)abs(value) - 1;
 						circuit[i]->addInputPin(iPins[index]);
 					}
 					else {
-						gatePin = floor(gatePin);
-						int index = (int)gatePin - 1;
-						isoPin[index] = 0;
+						int index = (int)floor(value) - 1;
 						circuit[i]->addInputPin(circuit[index]);
+						searchOutput[index] = 0;
 					}
-					j++;
 				}
 			}
-			for (int i = 0; i < gatesNumber; i++) {
-				if (isoPin[i] == 1) {
+			for (int i = 0; i < circuit.size(); i++) {
+				if (searchOutput[i] == 1) {
 					oPins.push_back(circuit[i]);
 					break;
 				}
 			}
 			return true;
 		}
-		else
-			return false;
 	}
 
 	int getCircuitSize() {
@@ -147,18 +114,47 @@ private:
 		return str;
 	}
 
-	/*void processIPinsNumber(std::fstream file) {
+	void clearVector() {
+		iPins.clear();
+		oPins.clear();
+		circuit.clear();
+	}
+
+	std::vector<std::vector<double>> getDoubleVector(std::fstream&  file) {
 		std::string line;
+		int iPinsNumber, gatesNumber;
 
 		std::getline(file, line);
-		int iPinsNumber = stoi(line);
+		iPinsNumber = stoi(line);
 		for (int i = 0; i < iPinsNumber; i++) {
 			iPins.push_back(new IPin);
 		}
-	}
 
-	std::vector<std::vector<double>> fileContentToVector(std::fstream file) {
-		                                  
-		return;
-	}*/
+		std::getline(file, line);
+		gatesNumber = stoi(line);
+
+		std::vector<std::vector<double>> vector(gatesNumber);
+
+		for (int i = 0; i < gatesNumber; i++) {
+			std::getline(file, line);
+			std::stringstream ss(line);
+			std::string token;
+
+			getline(ss, token, ' ');
+			int gateType = stoi(token);
+
+			if (gateType == 1)circuit.push_back(new GateAND);
+			else if (gateType == 2)circuit.push_back(new GateOR);
+			else if (gateType == 3)circuit.push_back(new GateNOT);
+
+			while (1)
+			{
+				getline(ss, token, ' ');
+				double value = stof(token);
+				vector[i].push_back(value);
+				if (value == 0)break;
+			}
+		}
+		return vector;
+	}
 };

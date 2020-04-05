@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Device">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAIAAAAAAAAAACAAAAAAAAEAAAQ=</HashCode>
+      <FileName>device.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GateAND" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>gate_and.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GateNOT" Collapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>gate_not.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GateOR" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>gate_or.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IPin" Collapsed="true">
+    <Position X="7.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAIAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>i_pin.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogicSimulator">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAQAAYAAEAAAACAAAAACBAAAAAAAAAAAQAUAAAA=</HashCode>
+      <FileName>logic_simulator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OPin" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>o_pin.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextUI">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAgAAAAEAAAAAAQAEEA=</HashCode>
+      <FileName>text_ui.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft JhengHei UI" Size="9" />
+</ClassDiagram>
